@@ -14,34 +14,34 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-width: 1px;
     display: flex;
-
 }
 
 .box {
     align-content: center;
     max-width: 200px;
     display: flex;
-
 }
 
 .textContainer {
-    align-items: center;
+    width: 55%;
     margin-left: 5px;
     align-content: center;
-    display: flex;
+
 }
 
 .text {
     font-size: 20px;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-right: 20px;
+    margin-top: 5px;
+
 }
 
 .sigla {
     transform: rotate(270deg);
     position: relative;
     display: flex;
+    height: auto
 }
 
 .line {
@@ -49,14 +49,28 @@
     height: 100%;
     width: 1px;
     position: relative;
+    min-width: 1px;
+    margin-right: 5px;
 }
 
 .delete {
-    background-color: red;
     width: 30px;
     height: 30px;
     border-radius: 100vmax;
     align-items: center;
     justify-content: center;
     display: flex;
+    background-color: red;
+    cursor: pointer;
+}
+
+.deleteContainer {
+    margin-left: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.X{
+    font-size: 20px;
+    cursor: pointer;
 }

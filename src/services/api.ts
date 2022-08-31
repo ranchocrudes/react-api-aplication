@@ -8,7 +8,7 @@ export function api(setCoin: any, coin: string) {
             "&currencies=",
             {
                 headers: {
-                    apiKey: "rpy5qaKIQBgUCDdC9OZUDmi8mCN189Bc"
+                    apiKey: "Q69OLK1OZbO1lOFE4YnmLELnNJ3Z4gvm"
                 }
             }
         )

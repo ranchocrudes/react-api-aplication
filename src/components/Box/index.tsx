@@ -3,6 +3,10 @@ import "./style.css";
 import { Grid } from "@mui/material";
 
 export default function Box({ childToParent, onDelete }: any) {
+
+  if(childToParent != null)
+  {
+    console.log(childToParent);
   const siglaCoin = childToParent.name.substring(3, 0);
   return (
     < >
@@ -11,12 +15,22 @@ export default function Box({ childToParent, onDelete }: any) {
           <h1 className="sigla">{siglaCoin}</h1>
           <div className="line" />
         </Grid>
-        <Grid container className="textContainer">
-          <h1 className="text">Sigla:{childToParent.name}</h1>
-          <h1 className="text">Valor:{childToParent.value}</h1>
-          <Grid className="delete" container minHeight={30} maxWidth={30} onClick={() => onDelete(childToParent)}>X</Grid>
+
+        <Grid  item className="textContainer">
+     
+            <h1 className="text">Sigla:{childToParent.name}</h1>
+            <h1 className="text">Valor:{childToParent.value}</h1>
         </Grid>
+        <div className="deleteContainer">
+            <Grid className="delete" minHeight={30} maxWidth={30} onClick={() => onDelete(childToParent)}><h1 className="X">X</h1></Grid>
+          </div>
       </Grid>
     </>
   );
+  }
+  else{
+    return <h1>{''}</h1>;
+  }
+ 
 }
+

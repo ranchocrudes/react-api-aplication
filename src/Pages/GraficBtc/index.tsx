@@ -10,7 +10,9 @@ import {
 } from 'recharts';
 import BarSup from '../../components/BarSup';
 import { apiBtc } from '../../services/api';
-import './style.css'
+import './style.css';
+
+import { useNavigate } from 'react-router-dom';
 
 interface Btc {
     date: string
@@ -18,11 +20,6 @@ interface Btc {
 }
 
 const pdata: Btc[] = [
-    {
-        date: '25/08/2022',
-
-        value: 21591
-    },
     {
         date: '26/08/2022',
 
@@ -44,6 +41,10 @@ const pdata: Btc[] = [
         value: 20275
     },
     {
+        date: '30/08/2022',
+        value: 19773
+    },
+    {
         date: '',
         value: 0
     }
@@ -51,16 +52,22 @@ const pdata: Btc[] = [
 
 export default function GraficBtc() {
     const [value, setValue] = useState<number>()
+
     const date = new Date().toLocaleDateString();
+
+    const navigate = useNavigate();
+
     useEffect(() => {
         apiBtc(setValue)
         pdata.forEach(vet => {
-            if (vet.date == '') {
-                vet.date = date;
-                vet.value = value;
+            if (value) {
+                !vet.date ? vet.date = date : vet.date = vet.date;
+                !vet.value ? vet.value = value : vet.value = vet.value;
             }
-        })
+        });
+        navigate('/graficBtc');
     }, [value]);
+
     return (
         <>
             <BarSup />
@@ -68,7 +75,7 @@ export default function GraficBtc() {
                 <h1 className="textBtc">
                     Grafic Btc
                 </h1>
-                <ResponsiveContainer width="90%" aspect={3} >
+                <ResponsiveContainer width="100%" aspect={3} >
                     <LineChart data={pdata} >
                         <CartesianGrid />
                         <XAxis dataKey="date"
@@ -85,4 +92,3 @@ export default function GraficBtc() {
         </>
     );
 }
-
