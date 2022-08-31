@@ -16,9 +16,6 @@ interface Btc {
     date: string
     value: number | unknown;
 }
-interface Teste {
-    number: number
-}
 
 const pdata: Btc[] = [
     {
@@ -54,48 +51,37 @@ const pdata: Btc[] = [
 
 export default function GraficBtc() {
     const [value, setValue] = useState<number>()
-    const [teste, setTeste] = useState<Teste[]>()
     const date = new Date().toLocaleDateString();
     useEffect(() => {
         apiBtc(setValue)
-
         pdata.forEach(vet => {
             if (vet.date == '') {
                 vet.date = date;
                 vet.value = value;
             }
-
         })
     }, [value]);
-
-
     return (
         <>
             <BarSup />
-            
-                <div className="graficContainer">
-                    <h1 className="textBtc">
-                        Grafic Btc
-                    </h1>
+            <div className="graficContainer">
+                <h1 className="textBtc">
+                    Grafic Btc
+                </h1>
+                <ResponsiveContainer width="90%" aspect={3} >
+                    <LineChart data={pdata} >
+                        <CartesianGrid />
+                        <XAxis dataKey="date"
+                            interval={'preserveStartEnd'} />
+                        <YAxis></YAxis>
+                        <Legend />
+                        <Tooltip />
 
-
-
-                    <ResponsiveContainer width="90%" aspect={3} >
-                        <LineChart data={pdata} >
-                            <CartesianGrid />
-                            <XAxis dataKey="date"
-                                interval={'preserveStartEnd'} />
-                            <YAxis></YAxis>
-                            <Legend />
-                            <Tooltip />
-
-                            <Line dataKey="value"
-                                stroke="red" activeDot={{ r: 8 }} />
-                        </LineChart>
-                    </ResponsiveContainer>
-
-                </div>
-            
+                        <Line dataKey="value"
+                            stroke="red" activeDot={{ r: 8 }} />
+                    </LineChart>
+                </ResponsiveContainer>
+            </div>
         </>
     );
 }

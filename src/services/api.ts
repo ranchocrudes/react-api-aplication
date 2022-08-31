@@ -1,7 +1,5 @@
 import axios from "axios";
 
-import { useState, useEffect } from "react";
-
 export function api(setCoin: any, coin: string) {
     axios
         .get(
@@ -25,7 +23,6 @@ export function api(setCoin: any, coin: string) {
 }
 
 export function apiBtc(setValue: number | any,) {
-    console.log('2');
     axios
         .get("https://api.blockchain.com/v3/exchange/tickers/BTC-USD", {
             headers: {

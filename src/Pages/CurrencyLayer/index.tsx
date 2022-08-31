@@ -10,32 +10,30 @@ interface Coin {
   value: number;
 }
 function CurrencyLayer() {
-  const [teste, setTeste] = useState<Coin[]>([]);
+  const [coin, SetCoin] = useState<Coin[]>([]);
 
   const childToParent = (childdata: any) => {
-    setTeste((oldValue: any) => [...oldValue, childdata]);
+    SetCoin((oldValue: any) => [...oldValue, childdata]);
   };
 
   const handleDelete = (item: any) => {
-    setTeste((oldValue) =>
+    SetCoin((oldValue) =>
       oldValue.filter((value) => value.name !== item.name)
     );
   };
   return (
     <>
       <BarSup />
-
-      <Grid id="container"container>
+      <Grid id="container" container>
         <Grid item md={2}>
           <SearchBar childToParent={childToParent} />
         </Grid>
-        <div className="card" style={teste.length === 0 ? {display:'none'}:{}}>
-            <Grid container columns={{ xs: 8, sm: 12, md: 18 }}>
-              {teste.map((item) => (
-                <Box childToParent={item} onDelete={handleDelete} />
-              ))}
-            </Grid>
-
+        <div className="card" style={coin.length === 0 ? { display: 'none' } : {}}>
+          <Grid container columns={{ xs: 8, sm: 12, md: 18 }}>
+            {coin.map((item) => (
+              <Box childToParent={item} onDelete={handleDelete} />
+            ))}
+          </Grid>
         </div>
       </Grid>
     </>

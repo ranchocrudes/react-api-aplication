@@ -15,14 +15,10 @@ function BarSup() {
             <h1 className='links' onClick={handleCurrency}>
                 CURRENCYLAYER
             </h1>
-
             <h1 className='links' onClick={handleBtc}>
                 GRAFIC BTC
             </h1>
-
-
         </div>
     );
 }
-
 export default BarSup;

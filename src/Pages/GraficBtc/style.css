@@ -1,13 +1,12 @@
 .graficContainer {
     width: 100%;
     align-items: center;
-   
     justify-content: center;
     margin-top: 100px;
-
 }
 
 .textBtc {
     text-align: center;
     font-size: 30px;
+    color: white;
 }

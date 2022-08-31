@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import CircularProgress from "@mui/material/CircularProgress";
 import { api } from "../../services/api";
 import { Autocomplete, TextField } from "@mui/material";
 
@@ -11,7 +10,6 @@ interface Coin {
 export default function SearchBar({ childToParent }: any) {
   const [value, setValue] = React.useState<any | null>(null);
   const [loading, setLoading] = useState(false);
-  const [teste, setTeste] = useState("");
   const [busca, setBusca] = useState("");
   const [options, setOptions] = React.useState<readonly Coin[]>([]);
 
@@ -22,19 +20,19 @@ export default function SearchBar({ childToParent }: any) {
       setLoading(false);
     }
   }, [busca]);
-
   return (
     <Autocomplete
       sx={{ width: "200px" }}
-      style={{marginTop:'50px'}}
+
+      style={{ marginTop: '50px' }}
       options={options}
       clearIcon={false}
-      
       getOptionLabel={(option: Coin) => option.name}
       renderInput={(params) => (
         <TextField
-        value={busca}
-          onChange={({ target }) => {setBusca(target.value)}}
+          style={{ backgroundColor: "white", color: 'white', borderRadius: 7 }}
+          value={busca}
+          onChange={({ target }) => { setBusca(target.value) }}
           {...params}
           label="Pesquisar"
         />
@@ -43,7 +41,6 @@ export default function SearchBar({ childToParent }: any) {
       onChange={(event: any, newValue: string | any) => {
         childToParent(newValue);
         setValue(newValue);
-        setTeste(newValue.name)
         console.log(busca)
       }}
     />
