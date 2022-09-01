@@ -4,8 +4,7 @@ import { Grid } from "@mui/material";
 import { minWidth } from "@mui/system";
 
 export default function Box({ childToParent, onDelete }: any) {
-  const [sumir, setSumir] = useState(false)
-  function opa(){
+  function opa() {
 
   }
   if (childToParent != null) {
@@ -13,21 +12,21 @@ export default function Box({ childToParent, onDelete }: any) {
     const siglaCoin = childToParent.name.substring(3, 0);
     return (
       < >
-        <Grid className="boxContainer" item xs={2}  sm={3} md={4}>
-          <Grid item className="box" onClick={(() => setSumir(!sumir))} xs={2} sm={3} md={5}>
+        <Grid className="boxContainer" item xs={2} sm={3} md={4}>
+          <Grid item className="box" xs={2} sm={3} md={5}>
             <h1 className="sigla" >{siglaCoin}</h1>
-            <div className="line" style={sumir ? { display: "flex" } : { display: "none" }} />
+            <div className="line" />
           </Grid>
 
-          <Grid item className="textContainer" style={sumir ? { display: "" } : { display: "none" } } >
+          <Grid item className="textContainer"   >
 
-            <h1 className="text">Sigla:{childToParent.name}</h1>
-            <h1 className="text">Valor:{childToParent.value}</h1>
-          </Grid>
-          <div className="deleteContainer">
-            <Grid className="delete" minHeight={30} maxWidth={30} onClick={() => onDelete(childToParent)}><h1 className="X">X</h1></Grid>
-          </div>
+          <h1 className="text">Sigla:{childToParent.name}</h1>
+          <h1 className="text">Valor:{childToParent.value}</h1>
         </Grid>
+        <div className="deleteContainer">
+          <Grid className="delete" minHeight={30} maxWidth={30} onClick={() => onDelete(childToParent)}><h1 className="X">X</h1></Grid>
+        </div>
+      </Grid>
       </>
     );
   }
