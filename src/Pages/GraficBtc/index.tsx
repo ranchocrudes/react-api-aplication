@@ -12,7 +12,6 @@ import BarSup from '../../components/BarSup';
 import './style.css';
 import { useNavigate } from 'react-router-dom';
 import { apiBtc } from '../../services/api';
-import Moment from 'moment';
 import { TextField } from "@mui/material";
 
 interface Values {
@@ -27,13 +26,11 @@ interface Date {
 export default function GraficBtc() {
     const [value, setValue] = useState([])
     const [infos, setInfos] = useState<Values[]>([])
-    const [date, setDate] = React.useState<any>();
     const [days, setDays] = React.useState<any | null>(null);
-    let j = -1;
     let data = new Date();
     data.setDate(data.getDate() + 1);
-
     const navigate = useNavigate();
+
     useEffect(() => {
         try {
             if (days != undefined) {
@@ -51,7 +48,6 @@ export default function GraficBtc() {
         catch (error) {
             console.log(error)
         }
-
     }, [days]);
 
     return (
