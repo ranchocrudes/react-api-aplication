@@ -18,25 +18,22 @@ interface Values {
     date: string
     values: number
 }
-interface Date {
-    date: string
-
-}
 
 export default function GraficBtc() {
     const [value, setValue] = useState([])
     const [infos, setInfos] = useState<Values[]>([])
     const [days, setDays] = React.useState<any | null>(null);
     let data = new Date();
-    data.setDate(data.getDate() + 1);
+    
     const navigate = useNavigate();
 
     useEffect(() => {
         try {
             if (days != undefined) {
                 apiBtc(setValue, days);
+                data.setDate(data.getDate() - days);
                 setInfos((value.map(store => {
-                    data.setDate(data.getDate() - 1);
+                    data.setDate(data.getDate() + 1);
                     return {
                         date: (data.getDate()) + "/" + ((data.getMonth()) + 1) + "/" + data.getFullYear(),
                         values: store
