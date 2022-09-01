@@ -2,13 +2,19 @@
     width: 90%;
     align-items: center;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 70px;
     margin-left: 5%;
 }
 
-.textBtc {
-    text-align: center;
-    font-size: 30px;
-    color: white;
-    margin-bottom: 10px;
+.containerInput {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-bottom: 40px;
+
+}
+.input{
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

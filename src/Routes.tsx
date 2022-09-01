@@ -5,6 +5,7 @@ import CurrencyLayer from './Pages/CurrencyLayer';
 import GraficBtc from './Pages/GraficBtc';
 
 export function AppRoutes() {
+
     return (
         <Router>
             <Routes>

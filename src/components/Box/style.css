@@ -41,7 +41,8 @@
     transform: rotate(270deg);
     position: relative;
     display: flex;
-    height: auto
+    height: auto;
+    cursor: pointer;
 }
 
 .line {
@@ -73,4 +74,7 @@
 .X{
     font-size: 20px;
     cursor: pointer;
+}
+.teste{
+    display: none;
 }

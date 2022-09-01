@@ -1,6 +1,7 @@
 import axios from "axios";
-
+import { useEffect } from "react";
 export function api(setCoin: any, coin: string) {
+
     axios
         .get(
             "https://api.apilayer.com/currency_data/live?source=" +
@@ -8,7 +9,7 @@ export function api(setCoin: any, coin: string) {
             "&currencies=",
             {
                 headers: {
-                    apiKey: "Q69OLK1OZbO1lOFE4YnmLELnNJ3Z4gvm"
+                    apiKey: "rpy5qaKIQBgUCDdC9OZUDmi8mCN189Bc"
                 }
             }
         )
@@ -22,14 +23,12 @@ export function api(setCoin: any, coin: string) {
         });
 }
 
-export function apiBtc(setValue: number | any,) {
+export function apiBtc(setValue: any, days: number) {
     axios
-        .get("https://api.blockchain.com/v3/exchange/tickers/BTC-USD", {
-            headers: {
-                apiKey: "1405af28-6a19-4f74-bbef-b62874fd93ff"
-            }
-        })
+        .get('https://cors-anywhere.herokuapp.com/https://api.blockchain.info/charts/market-price?timespan=' +
+            days +
+            'days')
         .then((response) => {
-            setValue(response.data.last_trade_price);
+            setValue((response.data.values).map((item: any) => item.y))
         });
 }

@@ -18,7 +18,7 @@ function CurrencyLayer() {
 
   const handleDelete = (item: any) => {
     SetCoin((oldValue) =>
-      oldValue.filter((value) => item.name != null && value.name !== item.name)
+      oldValue.filter((value) => value.name !== item.name)
     )
   }
 
