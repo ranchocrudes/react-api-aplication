@@ -19,35 +19,39 @@ interface Values {
     date: string
     values: number
 }
+interface Date {
+    date: string
+
+}
 
 export default function GraficBtc() {
     const [value, setValue] = useState([])
     const [infos, setInfos] = useState<Values[]>([])
+    const [date, setDate] = React.useState<any>();
     const [days, setDays] = React.useState<any | null>(null);
-    let j = 5;
+    let j = -1;
+    let data = new Date();
+    data.setDate(data.getDate() + 1);
 
     const navigate = useNavigate();
     useEffect(() => {
         try {
             if (days != undefined) {
                 apiBtc(setValue, days);
-
                 setInfos((value.map(store => {
-                    j--;
+                    data.setDate(data.getDate() - 1);
                     return {
-                        date: Moment().days(j).format('DD-MM-YYYY'),
+                        date: (data.getDate()) + "/" + ((data.getMonth()) + 1) + "/" + data.getFullYear(),
                         values: store
                     }
-
                 })))
-
+                navigate('/graficBtc')
             }
-            navigate('/graficBtc')
         }
         catch (error) {
             console.log(error)
         }
-        
+
     }, [days]);
 
     return (
